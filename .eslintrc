@@ -1,0 +1,51 @@
+{
+    "extends": "airbnb-base",
+    "env": {
+        "browser": true,
+        "jest": true,
+        "node": true
+    },
+    "rules": {
+        "indent": ["error", 4],
+        "no-console": "error",
+        "no-confusing-arrow": [0],
+        "import/no-extraneous-dependencies": ["error", {
+            "devDependencies": [
+                "**/*.test.js"
+        ]
+    }],
+    "no-underscore-dangle": ["error", {
+        "allowAfterThis": true,
+        "allowAfterSuper": true
+    }],
+    "comma-dangle": ["error", {
+        "functions": "never",
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline"
+    }],
+        "max-len": ["error", {
+            "code": 150,
+            "ignoreStrings": true,
+            "ignoreUrls": true,
+            "ignoreComments": true
+        }],
+        "max-depth": ["error", 4],
+        "max-nested-callbacks": ["error", 6],
+        "complexity": ["warn", 8],
+        "key-spacing": ["error", {
+            "multiLine":  { "mode": "minimum" }
+        }],
+        "no-warning-comments": ["warn", {
+            "terms": ["todo", "@todo", "@deprecated"],
+            "location": "start"
+        }],
+        "no-unused-vars": ["error", {
+            "vars": "local",
+            "args": "all",
+            "argsIgnorePattern": "^_"
+        }]
+    },
+    "parser": "@babel/eslint-parser"
+}

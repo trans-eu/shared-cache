@@ -1,0 +1,30 @@
+{
+  "name": "@trans.eu/shared-cache",
+  "version": "1.0.0",
+  "description": "Cache that can be accessed from several browsing contexts (based on SharedWorker API)",
+  "main": "./sharedCache.js",
+  "scripts": {
+    "lint": "eslint --ext .js ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trans-eu/shared-cache.git"
+  },
+  "author": {
+    "name": "Trans.eu",
+    "url": "https://github.com/trans-eu"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/trans-eu/shared-cache/issues"
+  },
+  "homepage": "https://github.com/trans-eu/shared-cache#readme",
+  "devDependencies": {
+    "@babel/core": "^7.19.6",
+    "@babel/eslint-parser": "^7.19.1",
+    "@babel/preset-env": "^7.19.4",
+    "eslint": "^8.26.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  }
+}
