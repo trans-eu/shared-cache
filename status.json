@@ -1,0 +1,6 @@
+{
+    "PENDING": "pending",
+    "FULFILLED": "fulfilled",
+    "REJECTED": "rejected",
+    "SYNC": "sync"
+}
