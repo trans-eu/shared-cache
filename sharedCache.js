@@ -100,7 +100,7 @@ class SharedCache {
     delete(key) {
         return new Promise((resolve) => {
             const remoteCall = this._getRemoteCall('delete', resolve);
-            remoteCall(key);
+            remoteCall({ key });
         });
     }
 
