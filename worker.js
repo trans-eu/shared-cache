@@ -116,6 +116,16 @@ const onConnect = (e) => {
                 }
             },
 
+            delete({ key }) {
+                const cache = getCache(cacheName);
+                cache.delete(key);
+            },
+
+            clear() {
+                const cache = getCache(cacheName);
+                cache.clear();
+            },
+
             disconnect: () => {
                 port.close();
                 ports.delete(port);
