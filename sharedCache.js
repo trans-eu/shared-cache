@@ -96,6 +96,20 @@ class SharedCache {
             }
         });
     }
+
+    delete(key) {
+        return new Promise((resolve) => {
+            const remoteCall = this._getRemoteCall('delete', resolve);
+            remoteCall({ key });
+        });
+    }
+
+    clear() {
+        return new Promise((resolve) => {
+            const remoteCall = this._getRemoteCall('clear', resolve);
+            remoteCall();
+        });
+    }
 }
 
 export default SharedCache;
