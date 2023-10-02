@@ -1,5 +1,13 @@
 import STATUS from './status.json';
 
+const getUUID = globalThis?.crypto?.randomUUID
+    ? globalThis.crypto.randomUUID.bind(crypto)
+    : () => {
+        const callId = URL.createObjectURL(new Blob());
+        URL.revokeObjectURL(callId);
+        return callId;
+    };
+
 class SharedCache {
     constructor({
         // Name is used to identify cache in worker as one worker can have multiple caches.
@@ -34,8 +42,7 @@ class SharedCache {
 
     _getRemoteCall = (fn, onMessageCallback) => {
         // Create a call id that's unique across all tabs.
-        const callId = URL.createObjectURL(new Blob());
-        URL.revokeObjectURL(callId);
+        const callId = getUUID();
 
         // Postpone the callback until received a message from the worker.
         this._pendingCallbacks.set(callId, onMessageCallback);

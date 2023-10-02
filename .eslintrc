@@ -5,6 +5,9 @@
         "jest": true,
         "node": true
     },
+    "globals": {
+        "globalThis": "readonly"
+    },
     "rules": {
         "indent": ["error", 4],
         "no-console": "error",
