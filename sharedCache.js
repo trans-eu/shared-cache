@@ -5,7 +5,7 @@ class SharedCache {
         // Name is used to identify cache in worker as one worker can have multiple caches.
         name,
         // The maximum amount of waiting time (in milis) for a worker's response ("get" calls only).
-        timeout = 10000,
+        timeout = 3_000,
         onError = console.error, // eslint-disable-line no-console
     } = {}) {
         // Map of "onmessage" callbacks mapped by call ids.
@@ -29,7 +29,9 @@ class SharedCache {
             }
         };
 
-        window.addEventListener('beforeunload', () => this._worker.postMessage({ fn: 'disconnect' }));
+        window.addEventListener('beforeunload', () => this._worker.postMessage({
+            fn: 'disconnect',
+        }));
     }
 
     _getRemoteCall = (fn, onMessageCallback) => {
@@ -47,12 +49,11 @@ class SharedCache {
             fn,
             args,
         });
-    };
+    }
 
     has(key) {
         return new Promise((resolve) => {
-            const remoteCall = this._getRemoteCall('has', resolve);
-            remoteCall({ key });
+            this._getRemoteCall('has', resolve)({ key });
         });
     }
 
@@ -99,15 +100,13 @@ class SharedCache {
 
     delete(key) {
         return new Promise((resolve) => {
-            const remoteCall = this._getRemoteCall('delete', resolve);
-            remoteCall({ key });
+            this._getRemoteCall('delete', resolve)({ key });
         });
     }
 
     clear() {
         return new Promise((resolve) => {
-            const remoteCall = this._getRemoteCall('clear', resolve);
-            remoteCall();
+            this._getRemoteCall('clear', resolve)();
         });
     }
 }
